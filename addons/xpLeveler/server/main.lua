@@ -20,7 +20,9 @@ AstraServerUtils.registerConsoleCommand("giveExp", function(source, args)
         AstraServerUtils.trace("Ce joueur n'est pas connecté !", AstraPrefixes.err)
         return
     end
-    AstraSPlayersManager.getPlayer(id):setAddonCache("exp", (AstraSPlayersManager.getPlayer(id):getAddonCache("exp")+ammount), true)
+    ---@type Player
+    local player = AstraSPlayersManager.getPlayer(id)
+    player:setAddonCache("exp", (player:getAddonCache("exp")+ammount), true)
     AstraServerUtils.trace("XP ajoutée au joueur !", AstraPrefixes.succes)
 end)
 
@@ -28,17 +30,18 @@ end)
 AstraSPlayersManager.registerAddonCache("exp", function(player)
     MySQL.Async.fetchAll("SELECT exp FROM astra_level WHERE license = @a", {['a'] = player.license}, function(result)
         if result[1] then
-            player:setAddonCache("exp", result[1].level, false)
+            player:setAddonCache("exp", result[1].exp, false)
         else
             player:setAddonCache("exp", 0, false)
             MySQL.Async.insert("INSERT INTO astra_level (license) VALUES(@a)", {['a'] = player.license})
         end
         AstraServerUtils.toClient("levelInitFirst", player.source, player:getAddonCache("exp"))
-        AstraServerUtils.trace("Niveau envoyé au joueur", AstraPrefixes.dev)
+        AstraServerUtils.trace(("Niveau envoyé au joueur (^3%s^7)"):format(player:getAddonCache("exp")), AstraPrefixes.dev)
     end)
 end, function(player)
     MySQL.Async.execute("UPDATE astra_level SET exp = @a WHERE license = @b", {['a'] = player:getAddonCache("exp"), ['b'] = player.license})
 end, function(player)
+    -- TODO -> Bug barre xp
     AstraServerUtils.toClient("levelGain", player.source, player:getAddonCache("exp"))
 end)
 

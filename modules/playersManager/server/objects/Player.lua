@@ -68,9 +68,10 @@ end
 ---@public
 ---@return any
 function Player:setAddonCache(index, value, shouldTriggerAssociedEvent)
+    -- TODO -> Ne fonctionne pas
     self.addonsCache[index] = value
     if shouldTriggerAssociedEvent then
-        AstraSPlayersManager.addonCache[index][3]()
+        AstraSPlayersManager.addonCache[index][3](self)
     end
 end
 
