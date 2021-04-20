@@ -12,7 +12,7 @@
 --]]
 
 local pvpEnabled = false
-local noPvPOpacity = 180
+local noPvPOpacity = 215
 Astra.newRepeatingTask(function()
     if not pvpEnabled then
         SetCanAttackFriendly(PlayerPedId(), false, false)
