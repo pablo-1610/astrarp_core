@@ -13,6 +13,7 @@
 
 AstraServerUtils.registerConsoleCommand("giveExp", function(source, args)
     if #args ~= 2 then return end
+    -- TODO -> Check si id & ammount nombres
     local id = tonumber(args[1])
     local ammount = tonumber(args[2])
     if not AstraSPlayersManager.exists(id) then

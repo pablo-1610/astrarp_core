@@ -18,7 +18,7 @@ AstraServerUtils.toAll = function(eventName, ...)
 end
 
 AstraServerUtils.registerConsoleCommand = function(command, func)
-    RegisterCommand(command, function(_,source,args)
+    RegisterCommand(command, function(source,args)
         if source ~= 0 then return end
         func(source, args)
     end, false)
