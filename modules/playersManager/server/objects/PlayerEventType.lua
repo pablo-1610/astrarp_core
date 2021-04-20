@@ -3,7 +3,7 @@
 --[[
   This file is part of Astra RolePlay.
   
-  File [main] created at [19/04/2021 23:23]
+  File [PlayerEventType] created at [20/04/2021 00:54]
 
   Copyright (c) Astra RolePlay - All Rights Reserved
 
@@ -11,11 +11,7 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 
-Astra.netRegisterAndHandle("levelInitFirst", function(level)
-    Wait(5000)
-    XNL_SetInitialXPLevels(level, true, true)
-end)
-
-Astra.netRegisterAndHandle("levelGain", function(level)
-    XNL_AddPlayerXP(level)
-end)
+PLAYER_EVENT_TYPE = {
+    CONNECTED = 1,
+    LEAVING = 2
+}

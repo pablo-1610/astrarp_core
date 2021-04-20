@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cfx" type="Lua">
+    <CLASSES>
+      <root url="jar://D:/Développement/Lua/Librairy/cfx.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

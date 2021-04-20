@@ -3,7 +3,7 @@
 --[[
   This file is part of Astra RolePlay.
   
-  File [main] created at [19/04/2021 23:23]
+  File [eventMusicPlayer] created at [20/04/2021 00:53]
 
   Copyright (c) Astra RolePlay - All Rights Reserved
 
@@ -11,11 +11,11 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 
-Astra.netRegisterAndHandle("levelInitFirst", function(level)
-    Wait(5000)
-    XNL_SetInitialXPLevels(level, true, true)
+Astra.netRegisterAndHandle("fivemPlayMusic", function(music)
+    PrepareMusicEvent(music)
+    TriggerMusicEvent(music)
 end)
 
-Astra.netRegisterAndHandle("levelGain", function(level)
-    XNL_AddPlayerXP(level)
+Astra.netRegisterAndHandle("fivemStopMusic", function(music)
+    CancelMusicEvent(music)
 end)

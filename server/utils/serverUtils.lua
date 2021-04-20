@@ -17,6 +17,13 @@ AstraServerUtils.toAll = function(eventName, ...)
     TriggerClientEvent("astra:" .. Astra.hash(eventName), -1, ...)
 end
 
+AstraServerUtils.registerConsoleCommand = function(command, func)
+    RegisterCommand(command, function(_,source,args)
+        if source ~= 0 then return end
+        func(source, args)
+    end, false)
+end
+
 AstraServerUtils.getLicense = function(source)
     for k, v in pairs(GetPlayerIdentifiers(source)) do
         if string.sub(v, 1, string.len("license:")) == "license:" then

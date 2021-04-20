@@ -29,7 +29,7 @@ RegisterCommand("XNLSetBaseXPExample", function(source, args)
     XNL_SetInitialXPLevels(TestNR, true, true)
 end)
 
-Citizen.CreateThread(function()
+Astra.newThread(function()
     if not XNL_EnableZKeyForRankbar then
         return
     end
