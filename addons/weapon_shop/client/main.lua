@@ -96,3 +96,21 @@ Astra.netRegisterAndHandle("openArmory", function(available, armoryId, accounts)
         RMenu:Delete(cat, sub("pay"))
     end)
 end)
+
+Astra.netRegisterAndHandle("ammunationUseClip", function()
+	local playerPed = PlayerPedId()
+
+	if IsPedArmed(playerPed, 4) then
+		local hash = GetSelectedPedWeapon(playerPed)
+
+		if hash then
+			AstraClientUtils.toServer("ammunationRemoveClip")
+			AddAmmoToPed(playerPed, hash, 25)
+			ESX.ShowNotification("Vous avez ~g~utilisé~s~ 1x chargeur")
+		else
+			ESX.ShowNotification("~r~Action Impossible~s~ : Vous n'avez pas d'arme en main !")
+		end
+	else
+		ESX.ShowNotification("~r~Action Impossible~s~ : Ce type de munition ne convient pas !")
+	end
+end)

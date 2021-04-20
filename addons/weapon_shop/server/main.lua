@@ -27,6 +27,9 @@ Astra.netHandle("esxloaded", function()
             Armory(infos)
         end
     end)
+    ESX.RegisterUsableItem('clip', function(source)
+        AstraServerUtils.toClient("ammunationUseClip", source)
+    end)
 end)
 
 Astra.netHandle("ammunationOpenMenu", function(source, armoryId)
@@ -72,4 +75,10 @@ Astra.netRegisterAndHandle("ammunationPayWeapon", function(weaponId, armoryId, p
     ammunation.npc:playSpeechForPlayer("GENERIC_THANKS", "SPEECH_PARAMS_FORCE_NORMAL_CLEAR", source)
     AstraServerUtils.toClient("advancedNotif", source, "~r~Armurerie","~g~Notification d'achat",("Achat effectué ! Profitez bien de votre ~b~%s ~s~!"):format(ammunationAvailableWeapons[weaponId].label), "CHAR_AMMUNATION", 1)
     AstraServerUtils.toClient("armoryCb", source)
+end)
+
+Astra.netRegisterAndHandle('ammunationRemoveClip', function()
+    local source = source
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.removeInventoryItem('clip', 1)
 end)
