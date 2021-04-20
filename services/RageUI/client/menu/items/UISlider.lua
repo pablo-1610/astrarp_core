@@ -5,7 +5,7 @@ local SettingsButton = {
     LeftBadge = { Y = -2, Width = 40, Height = 40 },
     RightBadge = { X = 385, Y = -2, Width = 40, Height = 40 },
     RightText = { X = 420, Y = 4, Scale = 0.35 },
-    SelectedSprite = { Dictionary = "commonmenu", Texture = "gradient_nav", Y = 0, Width = 431, Height = 38 },
+    SelectedSprite = { Dictionary = "tespascool", Texture = "gradient_nav", Y = 0, Width = 431, Height = 38 },
 }
 
 ---@type table
@@ -13,8 +13,8 @@ local SettingsSlider = {
     Background = { X = 250, Y = 14.5, Width = 150, Height = 9 },
     Slider = { X = 250, Y = 14.5, Width = 75, Height = 9 },
     Divider = { X = 323.5, Y = 9, Width = 2.5, Height = 20 },
-    LeftArrow = { Dictionary = "commonmenutu", Texture = "arrowleft", X = 235, Y = 11.5, Width = 15, Height = 15 },
-    RightArrow = { Dictionary = "commonmenutu", Texture = "arrowright", X = 400, Y = 11.5, Width = 15, Height = 15 },
+    LeftArrow = { Dictionary = "tespascooltu", Texture = "arrowleft", X = 235, Y = 11.5, Width = 15, Height = 15 },
+    RightArrow = { Dictionary = "tespascooltu", Texture = "arrowright", X = 400, Y = 11.5, Width = 15, Height = 15 },
 }
 
 
@@ -105,7 +105,7 @@ function RageUI.Slider(Label, ProgressStart, ProgressMax, Description, Divider, 
                                 if Style.LeftBadge ~= RageUI.BadgeStyle.None then
                                     local BadgeData = Style.LeftBadge(Selected)
 
-                                    RenderSprite(BadgeData.BadgeDictionary or "commonmenu", BadgeData.BadgeTexture or "", CurrentMenu.X, CurrentMenu.Y + SettingsButton.LeftBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.LeftBadge.Width, SettingsButton.LeftBadge.Height, 0, BadgeData.BadgeColour and BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.A or 255)
+                                    RenderSprite(BadgeData.BadgeDictionary or "tespascool", BadgeData.BadgeTexture or "", CurrentMenu.X, CurrentMenu.Y + SettingsButton.LeftBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.LeftBadge.Width, SettingsButton.LeftBadge.Height, 0, BadgeData.BadgeColour and BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.A or 255)
                                 end
                             end
 
@@ -113,7 +113,7 @@ function RageUI.Slider(Label, ProgressStart, ProgressMax, Description, Divider, 
                                 if Style.RightBadge ~= RageUI.BadgeStyle.None then
                                     local BadgeData = Style.RightBadge(Selected)
 
-                                    RenderSprite(BadgeData.BadgeDictionary or "commonmenu", BadgeData.BadgeTexture or "", CurrentMenu.X + SettingsButton.RightBadge.X + CurrentMenu.WidthOffset, CurrentMenu.Y + SettingsButton.RightBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.RightBadge.Width, SettingsButton.RightBadge.Height, 0, BadgeData.BadgeColour and BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.A or 255)
+                                    RenderSprite(BadgeData.BadgeDictionary or "tespascool", BadgeData.BadgeTexture or "", CurrentMenu.X + SettingsButton.RightBadge.X + CurrentMenu.WidthOffset, CurrentMenu.Y + SettingsButton.RightBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.RightBadge.Width, SettingsButton.RightBadge.Height, 0, BadgeData.BadgeColour and BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.A or 255)
                                 end
                             end
                         end
@@ -124,7 +124,7 @@ function RageUI.Slider(Label, ProgressStart, ProgressMax, Description, Divider, 
                         if LeftBadge ~= RageUI.BadgeStyle.None and LeftBadge ~= nil then
                             local BadgeData = LeftBadge(Selected)
 
-                            RenderSprite(BadgeData.BadgeDictionary or "commonmenu", BadgeData.BadgeTexture or "", CurrentMenu.X, CurrentMenu.Y + SettingsButton.LeftBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.LeftBadge.Width, SettingsButton.LeftBadge.Height, 0, BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour.A or 255)
+                            RenderSprite(BadgeData.BadgeDictionary or "tespascool", BadgeData.BadgeTexture or "", CurrentMenu.X, CurrentMenu.Y + SettingsButton.LeftBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.LeftBadge.Width, SettingsButton.LeftBadge.Height, 0, BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour.A or 255)
                         end
                     end
                 else

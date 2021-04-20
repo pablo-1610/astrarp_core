@@ -1,5 +1,5 @@
 local Statistics = {
-    Background = { Dictionary = "commonmenu", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 42 },
+    Background = { Dictionary = "tespascool", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 42 },
     Text = {
         Left = { X = -40, Y = 15, Scale = 0.35 },
     },

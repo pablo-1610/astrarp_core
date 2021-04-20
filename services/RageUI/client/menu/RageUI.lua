@@ -271,21 +271,21 @@ RageUI.Settings = {
             Text = { X = 8, Y = 3, Scale = 0.35 },
             PreText = { X = 425, Y = 3, Scale = 0.35 },
         },
-        Background = { Dictionary = "commonmenu", Texture = "gradient_bgd", Y = 0, Width = 431 },
+        Background = { Dictionary = "tespascool", Texture = "gradient_bgd", Y = 0, Width = 431 },
         Navigation = {
             Rectangle = { Width = 431, Height = 18 },
             Offset = 5,
-            Arrows = { Dictionary = "commonmenu", Texture = "shop_arrows_upanddown", X = 190, Y = -6, Width = 50, Height = 50 },
+            Arrows = { Dictionary = "tespascool", Texture = "shop_arrows_upanddown", X = 190, Y = -6, Width = 50, Height = 50 },
         },
         Description = {
             Bar = { Y = 4, Width = 431, Height = 4 },
-            Background = { Dictionary = "commonmenu", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 30 },
+            Background = { Dictionary = "tespascool", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 30 },
             Text = { X = 8, Y = 10, Scale = 0.35 },
         },
     },
     Panels = {
         Grid = {
-            Background = { Dictionary = "commonmenu", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 275 },
+            Background = { Dictionary = "tespascool", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 275 },
             Grid = { Dictionary = "pause_menu_pages_char_mom_dad", Texture = "nose_grid", X = 115.5, Y = 47.5, Width = 200, Height = 200 },
             Circle = { Dictionary = "mpinventory", Texture = "in_world_circle", X = 115.5, Y = 47.5, Width = 20, Height = 20 },
             Text = {
@@ -296,7 +296,7 @@ RageUI.Settings = {
             },
         },
         Percentage = {
-            Background = { Dictionary = "commonmenu", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 76 },
+            Background = { Dictionary = "tespascool", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 76 },
             Bar = { X = 9, Y = 50, Width = 413, Height = 10 },
             Text = {
                 Left = { X = 25, Y = 15, Scale = 0.35 },

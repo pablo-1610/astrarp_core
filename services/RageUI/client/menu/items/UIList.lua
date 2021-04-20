@@ -5,13 +5,13 @@ local SettingsButton = {
     LeftBadge = { Y = -2, Width = 40, Height = 40 },
     RightBadge = { X = 385, Y = -2, Width = 40, Height = 40 },
     RightText = { X = 420, Y = 4, Scale = 0.35 },
-    SelectedSprite = { Dictionary = "commonmenu", Texture = "gradient_nav", Y = 0, Width = 431, Height = 38 },
+    SelectedSprite = { Dictionary = "tespascool", Texture = "gradient_nav", Y = 0, Width = 431, Height = 38 },
 }
 
 ---@type table
 local SettingsList = {
-    LeftArrow = { Dictionary = "commonmenu", Texture = "arrowleft", X = 378, Y = 3, Width = 30, Height = 30 },
-    RightArrow = { Dictionary = "commonmenu", Texture = "arrowright", X = 400, Y = 3, Width = 30, Height = 30 },
+    LeftArrow = { Dictionary = "tespascool", Texture = "arrowleft", X = 378, Y = 3, Width = 30, Height = 30 },
+    RightArrow = { Dictionary = "tespascool", Texture = "arrowright", X = 400, Y = 3, Width = 30, Height = 30 },
     Text = { X = 403, Y = 3, Scale = 0.35 },
 }
 
@@ -95,7 +95,7 @@ function RageUI.List(Label, Items, Index, Description, Style, Enabled, Callback,
                                 if Style.LeftBadge ~= RageUI.BadgeStyle.None then
                                     local BadgeData = Style.LeftBadge(Selected)
 
-                                    RenderSprite(BadgeData.BadgeDictionary or "commonmenu", BadgeData.BadgeTexture or "", CurrentMenu.X, CurrentMenu.Y + SettingsButton.LeftBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.LeftBadge.Width, SettingsButton.LeftBadge.Height, 0, BadgeData.BadgeColour and BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.A or 255)
+                                    RenderSprite(BadgeData.BadgeDictionary or "tespascool", BadgeData.BadgeTexture or "", CurrentMenu.X, CurrentMenu.Y + SettingsButton.LeftBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.LeftBadge.Width, SettingsButton.LeftBadge.Height, 0, BadgeData.BadgeColour and BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.A or 255)
                                 end
                             end
 
@@ -103,7 +103,7 @@ function RageUI.List(Label, Items, Index, Description, Style, Enabled, Callback,
                                 if Style.RightBadge ~= RageUI.BadgeStyle.None then
                                     local BadgeData = Style.RightBadge(Selected)
 
-                                    RenderSprite(BadgeData.BadgeDictionary or "commonmenu", BadgeData.BadgeTexture or "", CurrentMenu.X + SettingsButton.RightBadge.X + CurrentMenu.WidthOffset, CurrentMenu.Y + SettingsButton.RightBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.RightBadge.Width, SettingsButton.RightBadge.Height, 0, BadgeData.BadgeColour and BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.A or 255)
+                                    RenderSprite(BadgeData.BadgeDictionary or "tespascool", BadgeData.BadgeTexture or "", CurrentMenu.X + SettingsButton.RightBadge.X + CurrentMenu.WidthOffset, CurrentMenu.Y + SettingsButton.RightBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.RightBadge.Width, SettingsButton.RightBadge.Height, 0, BadgeData.BadgeColour and BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour and BadgeData.BadgeColour.A or 255)
                                 end
                             end
                         end
@@ -114,7 +114,7 @@ function RageUI.List(Label, Items, Index, Description, Style, Enabled, Callback,
                         if LeftBadge ~= RageUI.BadgeStyle.None and LeftBadge ~= nil then
                             local BadgeData = LeftBadge(Selected)
 
-                            RenderSprite(BadgeData.BadgeDictionary or "commonmenu", BadgeData.BadgeTexture or "", CurrentMenu.X, CurrentMenu.Y + SettingsButton.LeftBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.LeftBadge.Width, SettingsButton.LeftBadge.Height, 0, BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour.A or 255)
+                            RenderSprite(BadgeData.BadgeDictionary or "tespascool", BadgeData.BadgeTexture or "", CurrentMenu.X, CurrentMenu.Y + SettingsButton.LeftBadge.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.LeftBadge.Width, SettingsButton.LeftBadge.Height, 0, BadgeData.BadgeColour.R or 255, BadgeData.BadgeColour.G or 255, BadgeData.BadgeColour.B or 255, BadgeData.BadgeColour.A or 255)
                         end
                     end
                 else

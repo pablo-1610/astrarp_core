@@ -1,5 +1,5 @@
 local GridPanelVertical = {
-    Background = { Dictionary = "commonmenu", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 275 },
+    Background = { Dictionary = "tespascool", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 275 },
     Grid = { Dictionary = "RageUI", Texture = "vertical_grid", X = 115.5, Y = 47.5, Width = 200, Height = 200 },
     Circle = { Dictionary = "mpinventory", Texture = "in_world_circle", X = 115.5, Y = 47.5, Width = 20, Height = 20 },
     Text = {

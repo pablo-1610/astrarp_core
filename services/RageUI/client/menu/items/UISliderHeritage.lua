@@ -2,7 +2,7 @@
 local SettingsButton = {
     Rectangle = { Y = 0, Width = 431, Height = 38 },
     Text = { X = 8, Y = 3, Scale = 0.33 },
-    SelectedSprite = { Dictionary = "commonmenu", Texture = "gradient_nav", Y = 0, Width = 431, Height = 38 },
+    SelectedSprite = { Dictionary = "tespascool", Texture = "gradient_nav", Y = 0, Width = 431, Height = 38 },
 }
 
 ---@type table

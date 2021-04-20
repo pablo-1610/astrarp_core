@@ -3,7 +3,7 @@ RageUI.BadgeStyle = {
     None = function()
         return {
             BadgeTexture = "",
-            BadgeDictionary = "commonmenu"
+            BadgeDictionary = "tespascool"
         }
     end,
     BronzeMedal = function()
