@@ -45,18 +45,6 @@ function Player:getESXPlayer()
     return ESX.GetPlayerFromId(self.id)
 end
 
----incrementSessionTimePlayed
----@public
----@return table
-function Player:incrementSessionTimePlayed()
-    self.session[1] = self.session[1] + 1
-    if self.session[1] > 60 then
-        self.session[1] = 0
-        self.session[2] = self.session[2] + 1
-        Astra.toInternal("onPlayerSessionHourElapsed", self)
-    end
-end
-
 ---getAddonCache
 ---@public
 ---@return any
@@ -96,4 +84,18 @@ function Player:stopMusicEvent(music)
     end
 end
 
+---incrementSessionTimePlayed
+---@public
+---@return table
+function Player:incrementSessionTimePlayed()
+    self.session[1] = self.session[1] + 1
+    if self.session[1] == 30 then
+        Astra.toInternal("onPlayerSessionMidElapsed", self.source)
+    end
+    if self.session[1] > 60 then
+        self.session[1] = 0
+        self.session[2] = self.session[2] + 1
+        Astra.toInternal("onPlayerSessionHourElapsed", self.source)
+    end
+end
 

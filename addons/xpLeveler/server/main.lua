@@ -43,9 +43,12 @@ end, function(player)
 end, function(player)
     -- TODO -> Bug barre xp
     AstraServerUtils.toClient("levelGain", player.source, player:getAddonCache("exp"))
+    MySQL.Async.execute("UPDATE astra_level SET exp = @a WHERE license = @b", {['a'] = player:getAddonCache("exp"), ['b'] = player.license})
 end)
 
 ---@param player Player
-Astra.netHandle("onPlayerSessionHourElapsed", function(player)
-
+Astra.netHandle("onPlayerSessionMidElapsed", function(id)
+    local player = AstraSPlayersManager.getPlayer(id)
+    local initialValue = player:getAddonCache("exp")
+    player:setAddonCache("exp", (initialValue+500), true)
 end)

@@ -115,6 +115,9 @@ function Npc:setFloatingText(text, rangeDisplay)
     self.displayInfos.floating = text
 end
 
+---playSpeech
+---@public
+---@return void
 function Npc:playSpeech(speech, param)
     if self:isRestricted() then
         for source, _ in pairs(self.allowed) do
@@ -123,4 +126,11 @@ function Npc:playSpeech(speech, param)
     else
         AstraServerUtils.toAll("npcPlaySound", self.id, speech, param)
     end
+end
+
+---playSpeechForPlayer
+---@public
+---@return void
+function Npc:playSpeechForPlayer(speech, param, source)
+    AstraServerUtils.toClient("npcPlaySound", source, self.id, speech, param)
 end
