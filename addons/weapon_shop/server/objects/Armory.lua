@@ -15,6 +15,7 @@
 ---@field public id number
 ---@field public zone number
 ---@field public npc Npc
+---@field public blip Blip
 Armory = {}
 Armory.__index = Armory
 
@@ -25,8 +26,9 @@ setmetatable(Armory, {
         if infos.npc ~= nil then
             self.npc = AstraSNpcsManager.createPublic("s_m_m_ammucountry", false, true, {coords = infos.npc.pos, heading = infos.npc.heading}, "WORLD_HUMAN_CLIPBOARD", nil)
             self.npc:setInvincible(true)
-            self.npc:setDisplayInfos({name = "[Vendeur] Joe Ammunation", range = 5.5, color = 55})
+            self.npc:setDisplayInfos({name = "[Vendeur] Joe Ammunation", range = 6.5, color = 55})
         end
+        self.blip = AstraSBlipsManager.createPublic(infos.pos, 110, 6, 0.8, "Ammunation", true)
         self.zone = AstraSZonesManager.createPublic(infos.pos, 22, {r = 255, g = 0, b = 0, a = 255}, function(source)
             if AstraSPlayersManager.exists(source) then
                 ---@type Player
