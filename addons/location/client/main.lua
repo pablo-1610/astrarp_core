@@ -36,12 +36,14 @@ end
 Astra.netRegisterAndHandle("locationCb", function(model)
     if model then
         AstraClientUtils.toServer("setOnPublicBucket")
-        model = GetHashKey(model)
-        local vehicle = CreateVehicle(model, availableSpawns[math.random(1,#availableSpawns)], spawnHeading, true, false)
-        SetVehicleEngineOn(vehicle, 1, 1, 0)
-        SetVehicleCustomPrimaryColour(vehicle, 33,33,33)
-        SetVehicleCustomSecondaryColour(vehicle, 33,33,33)
-        TaskWarpPedIntoVehicle(PlayerPedId(), vehicle, -1)
+        Citizen.SetTimeout(1000, function()
+            model = GetHashKey(model)
+            local vehicle = CreateVehicle(model, availableSpawns[math.random(1,#availableSpawns)], spawnHeading, true, false)
+            SetVehicleEngineOn(vehicle, 1, 1, 0)
+            SetVehicleCustomPrimaryColour(vehicle, 33,33,33)
+            SetVehicleCustomSecondaryColour(vehicle, 33,33,33)
+            TaskWarpPedIntoVehicle(PlayerPedId(), vehicle, -1)
+        end)
     end
     isWaitingServerResponse = false
 end)

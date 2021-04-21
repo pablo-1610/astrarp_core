@@ -11,14 +11,14 @@ local playerRestrictedBuckets = 5000
 
 Astra.netRegisterAndHandle("setBucket", function(bucketID)
     local source = source
-    SetPlayerRoutingBucket(bucketID, 0)
+    SetPlayerRoutingBucket(source, bucketID)
     AstraServerUtils.trace(("Le joueur %s est désormais sur le bucket %s"):format(GetPlayerName(source), bucketID), AstraPrefixes.sync)
 end)
 
 Astra.netRegisterAndHandle("genPlayerBucket", function()
     local source = source
     local bucketID = (playerRestrictedBuckets+source)
-    SetPlayerRoutingBucket(bucketID, 0)
+    SetPlayerRoutingBucket(source, bucketID)
     AstraServerUtils.trace(("Le joueur %s est désormais sur le bucket %s"):format(GetPlayerName(source), bucketID), AstraPrefixes.sync)
 end)
 
