@@ -36,7 +36,7 @@ end
 Astra.netRegisterAndHandle("locationCb", function(model)
     if model then
         AstraClientUtils.toServer("setOnPublicBucket")
-        Citizen.SetTimeout(500, function()
+        Astra.newWaitingThread(500, function()
             model = GetHashKey(model)
             local vehicle = CreateVehicle(model, availableSpawns[math.random(1,#availableSpawns)], spawnHeading, true, false)
             SetVehicleEngineOn(vehicle, 1, 1, 0)
