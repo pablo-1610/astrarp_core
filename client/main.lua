@@ -36,3 +36,13 @@ AddEventHandler("::{korioz#0110}::esx:setJob", function(job)
     Job = ESX.PlayerData.job
     AstraClientUtils.toServer("jobUpdated", job)
 end)
+
+local antispam = false
+RegisterCommand("co", function()
+    if antispam then return end
+    AstraClientUtils.toServer("coords", GetEntityCoords(PlayerPedId()))
+    antispam = true
+    Astra.newWaitingThread(500, function()
+        antispam = false
+    end)
+end)
