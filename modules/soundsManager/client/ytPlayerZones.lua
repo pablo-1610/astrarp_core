@@ -192,52 +192,15 @@ end)
 
 
 local MusicZone = {
-    --[[
-    {
-        name = "police_radio",
-        link = "https://www.youtube.com/watch?v=eqnq5XF3CJ0",
-        dst = 15.0,
-        starting = 35.0,
-        pos = vector3(440.81, -977.01, 30.68),
-        max = 0.035,
-    },
-    -- Mag vetement 1
-    {
-        name = "astra_shop_ambiance1",
-        link = "https://www.youtube.com/watch?v=rS8t1q4cObI",
-        dst = 15.0,
-        starting = 30.0,
-        pos = vector3(122.56, -1032.94, 29.27),
-        max = 0.035
-    },
-    -- Mag vetement 2
-    {
-        name = "astra_shop_ambiance2",
-        link = "https://www.youtube.com/watch?v=rS8t1q4cObI",
-        dst = 25.0,
-        starting = 30.0,
-        pos = vector3(-715.92, -382.39, 34.82),
-        max = 0.035
-    },
 
     {
-        name = "shop_ambient",
-        link = "https://www.youtube.com/watch?v=WoxnL5dakyA&t=6s",
-        dst = 10.0,
-        starting = 30.0,
-        pos = vector3(25.74, -1345.8, 29.49),
-        max = 0.09,
+        name = "casinohoho",
+        link = "https://www.youtube.com/watch?v=Zg6tFYIBvIo",
+        dst = 15.0,
+        starting = 50.0,
+        pos = vector3(219.28915405273, -872.91412353516, 30.492118835449),
+        max = 0.10,
     },
-
-    {
-        name = "japan_ojap",
-        link = "https://youtu.be/f3SgSAD2hc4",
-        dst = 20.0,
-        starting = 30.0,
-        pos = vector3(-160.63, 292.91, 93.76),
-        max = 0.18,
-    }
-    --]]
 }
 
 Astra.newThread(function()
@@ -254,6 +217,7 @@ Astra.newThread(function()
                     if soundExists(v.name) then
                         Resume(v.name)
                     else
+                        print("Play URL !")
                         PlayUrlPos(v.name, v.link, v.max, v.pos, true)
                         setVolumeMax(v.name, v.max)
                         Distance(v.name, v.dst)
