@@ -17,7 +17,12 @@ local sub = function(str)
     return cat .. "_" .. str
 end
 
-Astra.netRegisterAndHandle("luckywheelOpenMenu", function(canDoFreeTurn, availablePaidTurns)
+Astra.netRegisterAndHandle("luckywheelCbTurn", function()
+    AstraGameUtils.advancedNotification("~r~Astra RP", "~y~Roue de la chance","Vous pouvez désormais vous rendre vers la roue et la tourner ! Bonne chance !", "CHAR_MILSITE", 1)
+    isWaitingServerResponse = false
+end)
+
+Astra.netRegisterAndHandle("luckywheelOpenMenu", function(canDoFreeTurn)
     if menuIsOpened then
         return
     end
@@ -45,6 +50,20 @@ Astra.netRegisterAndHandle("luckywheelOpenMenu", function(canDoFreeTurn, availab
 
             RageUI.IsVisible(RMenu:Get(cat, sub("main")), true, true, true, function()
                 tick()
+                RageUI.Separator("↓ ~o~Tour gratuit ~s~↓")
+                if canDoFreeTurn then
+                    RageUI.ButtonWithStyle("~g~Obtenir mon tour gratuit", nil, {}, true, function(_,_,s)
+                        if s then
+                            shouldStayOpened = false
+                            isWaitingServerResponse = true
+                            AstraClientUtils.toServer("luckywheelRequestFreeTurn")
+                        end
+                    end)
+                else
+                    RageUI.ButtonWithStyle("~r~Revenez plus tard", nil, {}, false, function()  end)
+                end
+                RageUI.Separator("↓ ~r~Tours payants ~s~↓")
+                RageUI.ButtonWithStyle("Bientôt disponibles...", nil, {}, false, function()  end)
             end, function()
             end)
 

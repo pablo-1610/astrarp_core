@@ -15,7 +15,7 @@ local tb = {}
 local baseCoords = 29.8
 local groundCoords = 29.392116928101
 
-local currentTurn, isRolling = true, false
+local currentTurn, isRolling = false, false
 
 local roue, base, triangle, socle, veh, areEntityCreated = nil,nil,nil,nil,false
 local currentVehicleRewardModel = nil
@@ -36,7 +36,7 @@ local additionalProps = {
 
 local function startSpin()
     Astra.newThread(function()
-        local pos = 5
+        local pos = 7
         SetEntityRotation(roue, 0, 0, 160.0, false, true);
 
         local deg = 0.0;
@@ -60,15 +60,8 @@ local function startSpin()
             Citizen.Wait(5);
         end
 
-        while inc > 0 do
-            SetEntityRotation(roue, 0, -deg, 160.0, false, true);
-            deg = deg + inc;
-            inc = inc - 0.01;
-            Citizen.Wait(5);
-        end
-
-        Citizen.Wait(5000);
-
+        AstraClientUtils.toServer("luckywheelRequestFinalPrice", ESX.Game.GetVehicleProperties(veh))
+        --Citizen.Wait(5000);
         isRolling = false;
     end)
 end
@@ -147,6 +140,10 @@ Astra.netRegisterAndHandle("luckywheelCbCurrentVehicle", function(vehicle)
     currentVehicleRewardModel = vehicle
 end)
 
+Astra.netHandle("luckywheelCbTurn", function()
+    currentTurn = true
+end)
+
 Astra.netHandle("esxloaded", function()
     AstraClientUtils.toServer("luckywheelRequestCurrentVehicle")
     while currentVehicleRewardModel == nil do Wait(1) end
@@ -181,6 +178,7 @@ Astra.netHandle("esxloaded", function()
                         else
                             AddTextEntry("AstraRoue", "Appuyez sur ~INPUT_CONTEXT~ pour faire tourner la roue")
                             if IsControlJustPressed(0, 51) then
+                                currentTurn = false
                                 isRolling = true
                                 -- @TODO -> Faire tourner la roue
                                 local playerPed = PlayerPedId()
