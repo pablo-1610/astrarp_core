@@ -113,6 +113,8 @@ Astra.netHandle("esxloaded", function()
         end
     end, "Appuyez sur ~INPUT_CONTEXT~ pour parler au vendeur de tickets", 60.0, 1.0)
 
+    AstraSBlipsManager.createPublic(vector3(220.05, -869.4, 30.49), 266, 27, 0.85, "Roue de la chance", true)
+
     local time = os.time()
     MySQL.Async.fetchAll("SELECT * FROM astra_luckywheel", {}, function(result)
         for k,v in pairs(result) do
