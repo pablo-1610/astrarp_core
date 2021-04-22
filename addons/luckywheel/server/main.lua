@@ -13,7 +13,7 @@
 
 local availableRewards = {
     "autarch",
-    "stretch"
+    "cyclone"
 }
 
 local vendorNpc, vendorZone
