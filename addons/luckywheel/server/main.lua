@@ -41,7 +41,7 @@ Astra.netRegisterAndHandle("luckywheelRequestFinalPrice", function(vehicleProps)
         currentlyAwaitingTurnPlayers[source] = nil
         local ran = math.random(1,30)
         if ran == 5 then
-            MySQL.Async.execute('INSERT INTO owned_vehicles (owner, plate, vehicle, type) VALUES (@owner, @plate, @vehicle, @type)', {
+            MySQL.Async.execute('INSERT INTO owned_vehicles (owner, plate, vehicle, type, state) VALUES (@owner, @plate, @vehicle, @type, 1)', {
                 ['@owner'] = xPlayer.identifier,
                 ['@plate'] = vehicleProps.plate,
                 ['@vehicle'] = json.encode(vehicleProps),
