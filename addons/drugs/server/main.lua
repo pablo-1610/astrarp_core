@@ -11,7 +11,7 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 
-AstraSharedDrugsList = {
+drugsList = {
   {
       name = "Weed",
 
@@ -154,7 +154,7 @@ AstraSDrugsManager.onCooldown = {}
 Astra.netHandle("esxloaded", function()
     Astra.newThread(function()
       Wait(8000)
-      for id, drug in pairs(AstraSharedDrugsList) do
+      for id, drug in pairs(drugsList) do
           AstraServerUtils.trace("Register de la drogue "..drug.name.." !", AstraPrefixes.zones)
           Drug(drug.harvest.position, drug.treatment.position, drug.sell.position, {harvest = drug.harvest, treatment = drug.treatment, sell = drug.sell})
       end
