@@ -26,6 +26,12 @@ local function recomp(str, source, color)
     AstraServerUtils.webhook(("Le joueur %s a gagné: %s"):format(GetPlayerName(source), str), color, "https://discord.com/api/webhooks/834675729634689064/JVKIL872SyrHfAabC-zZLVlo9CX6pVD5qAWylYbWe1lAAm2OoyjOean_yGLQkIobPv1x")
 end
 
+AstraServerUtils.registerConsoleCommand("luckywheelSetCar", function(source, args)
+    currentVehicle = args[1]
+    AstraServerUtils.trace("Véhicule de la roue changée !", AstraPrefixes.succes)
+    AstraServerUtils.toAll("luckywheelVehicleChange", args[1])
+end)
+
 AstraSPlayersManager.registerEventOverrider(PLAYER_EVENT_TYPE.LEAVING, function(source)
     currentlyAwaitingTurnPlayers[source] = nil
 end)

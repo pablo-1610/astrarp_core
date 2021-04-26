@@ -140,6 +140,11 @@ Astra.netRegisterAndHandle("luckywheelCbCurrentVehicle", function(vehicle)
     currentVehicleRewardModel = vehicle
 end)
 
+Astra.netRegisterAndHandle("luckywheelVehicleChange", function(vehicle)
+    currentVehicleRewardModel = vehicle
+    removeAllWheelShits()
+end)
+
 Astra.netHandle("luckywheelCbTurn", function()
     currentTurn = true
 end)
