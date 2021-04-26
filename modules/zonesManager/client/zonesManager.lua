@@ -24,7 +24,7 @@ Astra.netHandle("esxloaded", function()
                 closeToMarker = true
                 DrawMarker(zone.type, zoneCoords, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.45, 0.45, 0.45, zone.color.r, zone.color.g, zone.color.b, zone.color.a, 55555, false, true, 2, false, false, false, false)
                 if dist <= zone.distances[2] then
-                    AddTextEntry("ZONES", zone.help or "Appuyez sur ~INPUT_CONTEXT~ pour intéragir")
+                    AddTextEntry("ZONES", "~g~Description~s~: "..(zone.help or "Appuyez sur ~INPUT_CONTEXT~ pour intéragir"))
                     DisplayHelpTextThisFrame("ZONES", false)
                     if IsControlJustPressed(0, 51) then
                         if not zones.cooldown then

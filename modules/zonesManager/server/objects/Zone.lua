@@ -43,6 +43,7 @@ setmetatable(Zone, {
 ---@public
 ---@return void
 function Zone:interact(source)
+    -- @TODO -> Sécurité vis à vis de la position
     self.onInteract(source)
     AstraServerUtils.trace(("%s a intéragit avec la zone n°%s"):format(GetPlayerName(source),self.zoneID), AstraPrefixes.zones)
 end
