@@ -11,7 +11,7 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 
-local pvpEnabled = false
+pvpEnabled = false
 local noPvPOpacity = 215
 Astra.newRepeatingTask(function()
     if not pvpEnabled then

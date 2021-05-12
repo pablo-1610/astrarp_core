@@ -17,7 +17,7 @@ local sub = function(str)
     return cat .. "_" .. str
 end
 
-Astra.netRegisterAndHandle("robberiesOpenMenu", function(id, active, copsCalledAfter, possibleOponents, difficulty)
+Astra.netRegisterAndHandle("robberiesOpenMenu", function(id, active, difficulty)
     if menuIsOpened then
         return
     end

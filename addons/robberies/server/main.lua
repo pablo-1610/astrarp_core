@@ -13,6 +13,7 @@
 
 AstraSRobberiesManager = {}
 AstraSRobberiesManager.list = {}
+AstraSRobberiesManager.players = {}
 
 Astra.netHandle("esxloaded", function()
     for id, robberyInfos in pairs(AstraSharedRobberies) do
@@ -27,4 +28,21 @@ Astra.netRegisterAndHandle("robberiesStart", function(id)
     ---@type Robbery
     local robbery = AstraSRobberiesManager.list[id]
     robbery:handleStart(_src)
+end)
+
+Astra.netRegisterAndHandle("robberiesDiedDuring", function()
+    local _src = source
+    ---@type Robbery
+    local robbery = AstraSRobberiesManager.list[AstraSRobberiesManager.players[_src].id]
+    robbery:exitRobbery(_src, true)
+end)
+
+Astra.netRegisterAndHandle("robberiesAddItem", function(itemTable)
+    local _src = source
+    if not AstraSRobberiesManager.players[_src] then
+        --@TODO -> Faire une liste d'error
+        DropPlayer(_src, "Une erreur est survenue, contactez un staff, Erreur: 16489")
+        return
+    end
+    table.insert(AstraSRobberiesManager.players[_src].bag, itemTable)
 end)

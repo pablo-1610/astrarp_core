@@ -16,25 +16,28 @@ local interiors = {
 }
 
 local items = {
-    {name = "Téléviseur", timeToTake = Astra.second(2), resellerPrice = 150, prop = "ch_prop_ch_arcade_big_screen"}
+    {name = "Hi-Fi", timeToTake = Astra.second(2), resellerPrice = 150, prop = "as_prop_as_speakerdock"},
+    {name = "Lampe", timeToTake = Astra.second(5), resellerPrice = 300, prop = "apa_mp_h_floorlamp_a", additionalZ = 1.50}
 }
 
 AstraSharedRobberiesInteriors = interiors
+AstraSharedRobberiesItems = items
 
 AstraSharedRobberies = {
 
     {
         interior = 1,
         entry = vector3(66.02, -1008.19, 29.36),
-        copsCalledAfter = Astra.second(15),
-        forcedExitAfter = Astra.second(30),
         difficultyIndex = 0.5,
         possibleObjects = {
             -- Item Type / Qty
-            {1, 1}
+            {1, 1, vector3(-780.84, 341.18, 216.84)},
+            {2, 1, vector3(-788.95, 322.45, 217.04)},
+            {2, 1, vector3(-790.6, 343.2, 216.84)}
         },
         possibleOponents = {
-            1,1,1
+            {"a_m_m_eastsa_02", vector3(-791.8, 342.61, 216.84), 228.0, "WORLD_HUMAN_AA_COFFEE", "weapon_snspistol"},
+            {"a_m_m_paparazzi_01", vector3(-799.57, 339.2, 220.44), 183.53, nil, "weapon_snspistol"}
         }
     }
 
