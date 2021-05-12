@@ -82,6 +82,8 @@ function PlayUrl(name_, url_, volume_, loop_)
     soundInfo[name_].loop = loop_ or false
 end
 
+Astra.netRegisterAndHandle("playUrl", playUrl)
+
 function PlayUrlPos(name_, url_, volume_, pos, loop_)
     SendNUIMessage({
         status = "url",
@@ -132,6 +134,8 @@ local function Destroy(name_)
     })
     soundInfo[name_] = nil
 end
+
+Astra.netRegisterAndHandle("destroy", Destroy)
 
 local function Resume(name_)
     SendNUIMessage({

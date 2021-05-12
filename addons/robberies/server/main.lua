@@ -18,8 +18,8 @@ AstraSRobberiesManager.players = {}
 Astra.netHandle("esxloaded", function()
     for id, robberyInfos in pairs(AstraSharedRobberies) do
         ---@type Robbery
-        local robbery = Robbery(robberyInfos)
-        AstraSRobberiesManager.list[robbery.id] = robbery
+        local robbery = Robbery(id,robberyInfos)
+        AstraSRobberiesManager.list[id] = robbery
     end
 end)
 
