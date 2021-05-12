@@ -28,6 +28,7 @@ AstraSharedRobberies = {
         entry = vector3(66.02, -1008.19, 29.36),
         copsCalledAfter = Astra.second(15),
         forcedExitAfter = Astra.second(30),
+        difficultyIndex = 0.5,
         possibleObjects = {
             -- Item Type / Qty
             {1, 1}

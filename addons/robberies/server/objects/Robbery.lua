@@ -21,8 +21,14 @@
 
 ---@field protected savedInfos table
 ---@field protected isActive boolean
+
+
 ---@field protected entryZone number
+---@field protected exitZone number
+
 ---@field protected blip number
+---@field protected difficultyIndex number
+
 Robbery = {}
 Robbery.__index = Robbery
 
@@ -31,6 +37,7 @@ setmetatable(Robbery, {
         local self = setmetatable({}, Robbery);
         self.isActive = true
         self.id = (#AstraSRobberiesManager + 1)
+        self.difficultyIndex = robberyInfos.difficultyIndex
         self.interior = robberyInfos.interior
         self.copsCalledAfter = robberyInfos.copsCalledAfter
         self.forcedExitAfter = robberyInfos.forcedExitAfter
@@ -41,6 +48,9 @@ setmetatable(Robbery, {
         self.entryZone = AstraSZonesManager.createPublic(robberyInfos.entry, 22, {r = 255, g = 0, b = 0, a = 255}, function(source)
             self:openMenu(source)
         end, "Appuyez sur ~INPUT_CONTEXT~ pour vérifier la serrure", 25.0, 1.0)
+        self.exitZone = AstraSZonesManager.createPrivate(AstraSharedRobberiesInteriors[self.interior].out, 22, {r = 255, g = 0, b = 0, a = 255}, function(source)
+            self:exitRobbery(source)
+        end, "Appuyez sur ~INPUT_CONTEXT~ pour sortir de cette propriétée", 150.0, 1.0, {})
         return self;
     end
 })
@@ -49,7 +59,20 @@ setmetatable(Robbery, {
 ---@public
 ---@return void
 function Robbery:openMenu(source)
-    AstraServerUtils.toClient("robberiesOpenMenu", source, self.id, self.isActive, self.copsCalledAfter, self.possibleOponents)
+    AstraServerUtils.toClient("robberiesOpenMenu", source, self.id, self.isActive, self.copsCalledAfter, self.possibleOponents, self.difficultyIndex)
+end
+
+---startCooldown
+---@public
+---@return void
+function Robbery:startCooldown()
+    Astra.newWaitingThread(Astra.second(60*30), function()
+        self.isActive = true
+        self.entryZone = AstraSZonesManager.createPublic(self.savedInfos.entry, 22, {r = 255, g = 0, b = 0, a = 255}, function(source)
+            self:openMenu(source)
+        end, "Appuyez sur ~INPUT_CONTEXT~ pour vérifier la serrure", 25.0, 1.0)
+        self.blip = AstraSBlipsManager.createPublic(self.savedInfos.entry, 171, 47, 0.90, "Cambriolage", true)
+    end)
 end
 
 ---handleStart
@@ -64,4 +87,15 @@ function Robbery:handleStart(source)
     AstraSZonesManager.delete(self.entryZone)
     AstraServerUtils.toClient("playScenario", source, "CODE_HUMAN_MEDIC_TEND_TO_DEAD", Astra.second(30), true)
     self.isActive = false
+    self:startCooldown()
+    Astra.newWaitingThread(Astra.second(30), function()
+        AstraServerUtils.toClient("robberiesEnter", source, {outSideRobbery = self.savedInfos.entry, entryRobbery = AstraSharedRobberiesInteriors[self.interior].entry, copsCalledAfter = self.copsCalledAfter, possibleOponents = self.possibleOponents})
+    end)
+end
+
+---exitRobbery
+---@public
+---@return void
+function Robbery:exitRobbery(source)
+
 end

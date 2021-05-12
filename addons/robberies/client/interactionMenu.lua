@@ -17,7 +17,7 @@ local sub = function(str)
     return cat .. "_" .. str
 end
 
-Astra.netRegisterAndHandle("robberiesOpenMenu", function(id, active, copsCalledAfter, possibleOponents)
+Astra.netRegisterAndHandle("robberiesOpenMenu", function(id, active, copsCalledAfter, possibleOponents, difficulty)
     if menuIsOpened then
         return
     end
@@ -48,10 +48,7 @@ Astra.netRegisterAndHandle("robberiesOpenMenu", function(id, active, copsCalledA
 
             RageUI.IsVisible(RMenu:Get(cat, sub("main")), true, true, true, function()
                 tick()
-                if not active then
-                    RageUI.Separator(("~s~↓ ~r~Rue~s~: ~o~%s ~s~↓"):format(streetName))
-                    RageUI.ButtonWithStyle("~s~La serrure semble être fracturée", "La serrure de cette propriétée semble fracturée, veuillez repasser plus tard!")
-                else
+                if active then
                     RageUI.Separator(("~s~↓ ~r~Rue~s~: ~o~%s ~s~↓"):format(streetName))
                     RageUI.ButtonWithStyle("Crocheter la serrure", "Vous permets de tenter de crocheter la serrure et de pénetrer dans la propriétée si ce crochetage se solde par une réussite", {RightLabel = "→→"}, true, function(_,_,s)
                         if s then
@@ -62,8 +59,7 @@ Astra.netRegisterAndHandle("robberiesOpenMenu", function(id, active, copsCalledA
                 end
             end, function()
                 if active then
-                    RageUI.StatisticPanelAdvanced("Difficulté", 0.0, nil, (#possibleOponents/6), { 255,0,0,255 }, nil, i)
-                    RageUI.StatisticPanelAdvanced("Rapidité", 0.0, nil, ((copsCalledAfter/1000)/100), { 255,0,0,255 }, nil, i)
+                    RageUI.StatisticPanelAdvanced("Difficulté", 0.0, nil, difficulty, { 255,0,0,255 }, nil, i)
                 end
             end)
 
