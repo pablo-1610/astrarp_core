@@ -8,6 +8,7 @@
 --]]
 
 ESX = nil
+devMode = false
 
 TriggerEvent("::{korioz#0110}::esx:getSharedObject", function(obj)
     ESX = obj

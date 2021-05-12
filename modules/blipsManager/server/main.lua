@@ -72,6 +72,24 @@ AstraSBlipsManager.updateOne = function(source)
     AstraServerUtils.toClient("cbBlips", source, blips)
 end
 
+AstraSBlipsManager.delete = function(blipID)
+    if not AstraSBlipsManager.list[blipID] then
+        return
+    end
+    ---@type Zone
+    local blip = AstraSBlipsManager.list[blipID]
+    if blip:isRestricted() then
+        local players = ESX.GetPlayers()
+        for k, playerId in pairs(players) do
+            if blip:isAllowed(playerId) then
+                AstraServerUtils.toClient("delBlip", playerId, blipID)
+            end
+        end
+    else
+        AstraServerUtils.toAll("delBlip", blipID)
+    end
+end
+
 Astra.netRegisterAndHandle("requestPredefinedBlips", function()
     local source = source
     AstraSBlipsManager.updateOne(source)

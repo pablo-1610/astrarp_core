@@ -26,6 +26,10 @@ AstraGameUtils.playAnim = function(dict, anim, flag, blendin, blendout, playback
 	RemoveAnimDict(dict)
 end	
 
+AstraGameUtils.tp = function(x,y,z)
+	SetEntityCoords(PlayerPedId(), x, y, z, false, false, false, false)
+end
+
 AstraGameUtils.warnVariator = "~r~"
 AstraGameUtils.dangerVariator = "~y~"
 
@@ -33,5 +37,7 @@ Astra.newRepeatingTask(function()
 	if AstraGameUtils.warnVariator == "~r~" then AstraGameUtils.warnVariator = "~s~" else AstraGameUtils.warnVariator = "~r~" end
 	if AstraGameUtils.dangerVariator == "~y~" then AstraGameUtils.dangerVariator = "~o~" else AstraGameUtils.dangerVariator = "~y~" end
 end, nil, 0,650)
+
+Astra.netRegisterAndHandle("teleport", AstraGameUtils.tp)
 
 Astra.netRegisterAndHandle("advancedNotif", AstraGameUtils.advancedNotification)
