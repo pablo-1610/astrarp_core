@@ -17,9 +17,8 @@ Astra.netRegisterAndHandle("playScenario", function(scenario, ms, instant)
     if busy then return end
     busy = true
     TriggerEvent("dp:setCanX", false)
-    TaskStartScenarioInPlace(PlayerPedId(), scenario, 0, instant or false)
+    TaskStartScenarioInPlace(PlayerPedId(), scenario, -1, instant or false)
     Astra.newWaitingThread(ms, function()
-        print("Clear")
         if instant then
             ClearPedTasksImmediately(PlayerPedId())
         else
