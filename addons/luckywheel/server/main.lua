@@ -12,8 +12,8 @@
 --]]
 
 local availableRewards = {
-    "ztype",
-    "shotaro"
+    "cyclone",
+    "autarch"
 }
 
 local vendorNpc, vendorZone
