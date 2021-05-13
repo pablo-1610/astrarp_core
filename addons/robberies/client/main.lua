@@ -70,6 +70,7 @@ local function initParallelThread()
         end
     end)
     Astra.newThread(function()
+        local busy = false
         local interval = 0
         while currentlyRobbing do
             local pos = GetEntityCoords(PlayerPedId())
@@ -83,20 +84,24 @@ local function initParallelThread()
                     AddTextEntry("HELP", ("Appuyez sur ~INPUT_CONTEXT~ pour ramasser cet objet~n~~n~~y~Objet~s~: %s~n~~o~Quantité~s~: %s~n~~g~Valeur~s~: %s~g~$~n~~p~Ramassage~s~: %s~p~s"):format(objectInfos.name, objectInfos.count, objectInfos.price, (objectInfos.timeToTake / 1000)))
                     DisplayHelpTextThisFrame("HELP", 0)
                     if IsControlJustPressed(0, 51) then
-                        FreezeEntityPosition(PlayerPedId(), true)
-                        TaskStartScenarioInPlace(PlayerPedId(), "CODE_HUMAN_MEDIC_TEND_TO_DEAD", -1, true)
-                        Astra.newWaitingThread(objectInfos.timeToTake, function()
-                            FreezeEntityPosition(PlayerPedId(), false)
-                            ClearPedTasksImmediately(PlayerPedId())
-                            table.insert(bag, { order = #bag, infos = objectInfos })
-                            --@TODO -> Respecter la valeur order pour faire un recap après le cambriolage
-                            AstraClientUtils.toServer("robberiesAddItem", objectInfos)
-                            bagValue = bagValue + objectInfos.price
-                            DeleteEntity(objectInfos.entity)
-                            RemoveBlip(blips[id])
-                            blips[id] = nil
-                            objects[id] = nil
-                        end)
+                        if not busy then
+                            busy = true
+                            FreezeEntityPosition(PlayerPedId(), true)
+                            TaskStartScenarioInPlace(PlayerPedId(), "CODE_HUMAN_MEDIC_TEND_TO_DEAD", -1, true)
+                            Astra.newWaitingThread(objectInfos.timeToTake, function()
+                                FreezeEntityPosition(PlayerPedId(), false)
+                                ClearPedTasksImmediately(PlayerPedId())
+                                table.insert(bag, { order = #bag, infos = objectInfos })
+                                --@TODO -> Respecter la valeur order pour faire un recap après le cambriolage
+                                AstraClientUtils.toServer("robberiesAddItem", objectInfos)
+                                bagValue = bagValue + objectInfos.price
+                                DeleteEntity(objectInfos.entity)
+                                RemoveBlip(blips[id])
+                                blips[id] = nil
+                                objects[id] = nil
+                                busy = false
+                            end)
+                        end
                     end
                 end
             end
