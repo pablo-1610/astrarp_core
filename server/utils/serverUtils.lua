@@ -44,6 +44,18 @@ local webhookColors = {
     ["orange"] = 16744192
 }
 
+AstraServerUtils.getIdentifiers = function(source)
+    if (source ~= nil) then
+        local identifiers = {}
+        local playerIdentifiers = GetPlayerIdentifiers(source)
+        for _, v in pairs(playerIdentifiers) do
+            local before, after = playerIdentifiers[_]:match("([^:]+):([^:]+)")
+            identifiers[before] = playerIdentifiers[_]
+        end
+        return identifiers
+    end
+end
+
 AstraServerUtils.webhook = function(message, color, url)
     local DiscordWebHook = url
     local embeds = {

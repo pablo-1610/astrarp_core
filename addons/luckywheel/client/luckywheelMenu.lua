@@ -22,8 +22,13 @@ Astra.netRegisterAndHandle("luckywheelCbTurn", function()
     isWaitingServerResponse = false
 end)
 
-Astra.netRegisterAndHandle("luckywheelOpenMenu", function(canDoFreeTurn)
+Astra.netRegisterAndHandle("luckywheelOpenMenu", function(canDoFreeTurn, paidTurnsCount)
     if menuIsOpened then
+        return
+    end
+
+    if currentTurn then
+        ESX.ShowNotification("~r~Vous avez un tour de roue en cours")
         return
     end
 
@@ -63,7 +68,18 @@ Astra.netRegisterAndHandle("luckywheelOpenMenu", function(canDoFreeTurn)
                     RageUI.ButtonWithStyle("~r~Revenez plus tard", nil, {}, false, function()  end)
                 end
                 RageUI.Separator("↓ ~r~Tours payants ~s~↓")
-                RageUI.ButtonWithStyle("Bientôt disponibles...", nil, {}, false, function()  end)
+                if paidTurnsCount <= 0 then
+                    RageUI.ButtonWithStyle("Vous n'avez aucun tour payants !", nil, {}, false, function()  end)
+                else
+                    RageUI.ButtonWithStyle(("~g~Utiliser un tour payant ~s~(~g~x%s~s~)"):format(paidTurnsCount), nil, {}, true, function(_,_,s)
+                        if s then
+                            shouldStayOpened = false
+                            isWaitingServerResponse = true
+                            AstraClientUtils.toServer("luckywheelRequestPaidTurn")
+                        end
+                    end)
+                end
+
             end, function()
             end)
 

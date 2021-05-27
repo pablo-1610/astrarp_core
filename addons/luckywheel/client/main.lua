@@ -15,7 +15,7 @@ local tb = {}
 local baseCoords = 29.8
 local groundCoords = 29.392116928101
 
-local currentTurn, isRolling = false, false
+currentTurn, isRolling = false, false
 
 local roue, base, triangle, socle, veh, areEntityCreated = nil,nil,nil,nil,false
 local currentVehicleRewardModel = nil

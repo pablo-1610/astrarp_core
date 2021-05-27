@@ -68,11 +68,11 @@ end
 ---@return void
 function Robbery:startCooldown()
     Astra.newWaitingThread(Astra.second(60 * 15), function()
-        self.isActive = true
         self.entryZone = AstraSZonesManager.createPublic(self.savedInfos.entry, 22, { r = 255, g = 0, b = 0, a = 255 }, function(source)
             self:openMenu(source)
         end, "Appuyez sur ~INPUT_CONTEXT~ pour vérifier la serrure", 25.0, 1.0)
         self.blip = AstraSBlipsManager.createPublic(self.savedInfos.entry, 171, 47, 0.90, "Cambriolage", true)
+        self.isActive = true
     end)
 end
 
