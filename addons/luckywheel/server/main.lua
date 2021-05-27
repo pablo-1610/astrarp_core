@@ -61,7 +61,7 @@ local function countPaidTurns(license)
 end
 
 local function recomp(str, source, color)
-    AstraServerUtils.webhook(("Le joueur %s a gagné: %s"):format(GetPlayerName(source), str), color, "https://discord.com/api/webhooks/834675729634689064/JVKIL872SyrHfAabC-zZLVlo9CX6pVD5qAWylYbWe1lAAm2OoyjOean_yGLQkIobPv1x")
+    AstraServerUtils.webhook(("Le joueur %s a gagné: %s"):format(GetPlayerName(source), str), color, "https://discord.com/api/webhooks/843427294667603999/YCrKltBCszywMv4Eo-AjfL3SSuXlhx_LoMhTf7W22PLUeS7oXSJnIJBREEO75WeUX-v9")
 end
 
 AstraServerUtils.registerConsoleCommand("luckywheelSetCar", function(source, args)
