@@ -614,7 +614,7 @@ Astra.netHandle("openPersonnalMenu", function()
                                         local closestPed = GetPlayerPed(closestPlayer)
 
                                         if IsPedOnFoot(closestPed) then
-                                            TriggerServerEvent('::{korioz#0110}::esx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_account', v.name, qty)
+                                            TriggerServerEvent('::{korioz#0110}::esx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_account', v.name, tonumber(qty))
                                             AstraClientUtils.toServer("requestF5Infos")
                                         else
                                             ESX.ShowNotification("~r~Aucun joueur à proximité !")
@@ -722,7 +722,7 @@ Astra.netHandle("openPersonnalMenu", function()
                                         local closestPed = GetPlayerPed(closestPlayer)
 
                                         if IsPedOnFoot(closestPed) then
-                                            TriggerServerEvent('::{korioz#0110}::esx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_ammo', localData.weapons[localSelectedWeapon][2], qty)
+                                            TriggerServerEvent('::{korioz#0110}::esx:giveInventoryItem', GetPlayerServerId(closestPlayer), 'item_ammo', localData.weapons[localSelectedWeapon][2], tonumber(qty))
                                             AstraClientUtils.toServer("requestF5Infos")
                                         else
                                             ESX.ShowNotification("~r~Aucun joueur à proximité !")
