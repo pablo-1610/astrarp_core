@@ -56,7 +56,7 @@ RageUI.UI = {
     Current = "RageUI",
     Style = {
         RageUI = {
-            Width = 100
+            Width = 0
         },
         NativeUI = {
             Width = 0
