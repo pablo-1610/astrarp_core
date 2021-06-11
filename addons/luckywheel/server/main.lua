@@ -12,8 +12,8 @@
 --]]
 
 local availableRewards = {
-    "cyclone",
-    "autarch"
+    "t20",
+    "adder"
 }
 
 local vendorNpc, vendorZone
