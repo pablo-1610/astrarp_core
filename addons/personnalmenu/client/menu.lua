@@ -291,7 +291,6 @@ Astra.netHandle("openPersonnalMenu", function()
                     if s then
                         ESX.TriggerServerCallback('menugetbills', function(b)
                             bills = b
-                            print(json.encode(b))
                         end)
                     end
                 end, RMenu:Get(cat, sub("bills")))
@@ -527,7 +526,7 @@ Astra.netHandle("openPersonnalMenu", function()
                 local it = 0
                 for i = 1, #bills, 1 do
                     it = (it + 1)
-                    RageUI.Button(bills[i].label, nil, { RightLabel = '$' .. ESX.Math.GroupDigits(bills[i].amount) }, true, function(Hovered, Active, Selected)
+                    RageUI.ButtonWithStyle(bills[i].label, nil, { RightLabel = '$' .. ESX.Math.GroupDigits(bills[i].amount) }, true, function(Hovered, Active, Selected)
                         if (Selected) then
                             ESX.TriggerServerCallback('::{korioz#0110}::esx_billing:payBill', function()
                                 ESX.TriggerServerCallback('::{korioz#0110}::KorioZ-PersonalMenu:Bill_getBills', function(b)
