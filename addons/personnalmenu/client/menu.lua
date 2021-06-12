@@ -605,7 +605,7 @@ Astra.netHandle("openPersonnalMenu", function()
                     if availableAccounts[v.name] then
                         RageUI.ButtonWithStyle(("Argent (%s~s~): ~g~%s$"):format(availableAccounts[v.name][1], ESX.Math.GroupDigits(v.money)), nil, { RightLabel = "~g~Donner ~s~→→" }, availableAccounts[v.name][2], function(_, _, s)
                             if s then
-                                local qty = AstraMenuUtils.inputBox("Quantité", "", 5, true)
+                                local qty = AstraMenuUtils.inputBox("Quantité", "", 7, true)
                                 if qty ~= nil and tonumber(qty) ~= nil and tonumber(qty) > 0 then
                                     local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
 

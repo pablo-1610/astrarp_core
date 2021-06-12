@@ -97,3 +97,131 @@ Astra.netRegisterAndHandle("requestF5Infos", function()
         name = GetPlayerName(_src)
     })
 end)
+
+RegisterServerEvent('::{korioz#0110}::KorioZ-PersonalMenu:Boss_promouvoirplayer')
+AddEventHandler('::{korioz#0110}::KorioZ-PersonalMenu:Boss_promouvoirplayer', function(target)
+    local sourceXPlayer = ESX.GetPlayerFromId(source)
+    local targetXPlayer = ESX.GetPlayerFromId(target)
+
+    if (targetXPlayer.job.grade == tonumber(getMaximumGrade(sourceXPlayer.job.name)) - 1) then
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous devez demander une autorisation du ~r~Gouvernement~w~.')
+    else
+        if sourceXPlayer.job.grade_name == 'boss' and sourceXPlayer.job.name == targetXPlayer.job.name then
+            targetXPlayer.setJob(targetXPlayer.job.name, tonumber(targetXPlayer.job.grade) + 1)
+
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous avez ~g~promu ' .. targetXPlayer.name .. '~w~.')
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', target, 'Vous avez été ~g~promu par ' .. sourceXPlayer.name .. '~w~.')
+        else
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
+        end
+    end
+end)
+
+RegisterServerEvent('::{korioz#0110}::KorioZ-PersonalMenu:Boss_destituerplayer')
+AddEventHandler('::{korioz#0110}::KorioZ-PersonalMenu:Boss_destituerplayer', function(target)
+    local sourceXPlayer = ESX.GetPlayerFromId(source)
+    local targetXPlayer = ESX.GetPlayerFromId(target)
+
+    if (targetXPlayer.job.grade == 0) then
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous ne pouvez pas ~r~rétrograder~w~ davantage.')
+    else
+        if sourceXPlayer.job.grade_name == 'boss' and sourceXPlayer.job.name == targetXPlayer.job.name then
+            targetXPlayer.setJob(targetXPlayer.job.name, tonumber(targetXPlayer.job.grade) - 1)
+
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous avez ~r~rétrogradé ' .. targetXPlayer.name .. '~w~.')
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', target, 'Vous avez été ~r~rétrogradé par ' .. sourceXPlayer.name .. '~w~.')
+        else
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
+        end
+    end
+end)
+
+RegisterServerEvent('::{korioz#0110}::KorioZ-PersonalMenu:Boss_recruterplayer')
+AddEventHandler('::{korioz#0110}::KorioZ-PersonalMenu:Boss_recruterplayer', function(target, job, grade)
+    local sourceXPlayer = ESX.GetPlayerFromId(source)
+    local targetXPlayer = ESX.GetPlayerFromId(target)
+
+    if sourceXPlayer.job.grade_name == 'boss' then
+        targetXPlayer.setJob(job, grade)
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous avez ~g~recruté ' .. targetXPlayer.name .. '~w~.')
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', target, 'Vous avez été ~g~embauché par ' .. sourceXPlayer.name .. '~w~.')
+    end
+end)
+
+RegisterServerEvent('::{korioz#0110}::KorioZ-PersonalMenu:Boss_virerplayer')
+AddEventHandler('::{korioz#0110}::KorioZ-PersonalMenu:Boss_virerplayer', function(target)
+    local sourceXPlayer = ESX.GetPlayerFromId(source)
+    local targetXPlayer = ESX.GetPlayerFromId(target)
+
+    if sourceXPlayer.job.grade_name == 'boss' and sourceXPlayer.job.name == targetXPlayer.job.name then
+        targetXPlayer.setJob('unemployed', 0)
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous avez ~r~viré ' .. targetXPlayer.name .. '~w~.')
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', target, 'Vous avez été ~g~viré par ' .. sourceXPlayer.name .. '~w~.')
+    else
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
+    end
+end)
+
+RegisterServerEvent('::{korioz#0110}::KorioZ-PersonalMenu:Boss_promouvoirplayer2')
+AddEventHandler('::{korioz#0110}::KorioZ-PersonalMenu:Boss_promouvoirplayer2', function(target)
+    local sourceXPlayer = ESX.GetPlayerFromId(source)
+    local targetXPlayer = ESX.GetPlayerFromId(target)
+
+    if (targetXPlayer.job2.grade == tonumber(getMaximumGrade(sourceXPlayer.job2.name)) - 1) then
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous devez demander une autorisation du ~r~Gouvernement~w~.')
+    else
+        if sourceXPlayer.job2.grade_name == 'boss' and sourceXPlayer.job2.name == targetXPlayer.job2.name then
+            targetXPlayer.setJob2(targetXPlayer.job2.name, tonumber(targetXPlayer.job2.grade) + 1)
+
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous avez ~g~promu ' .. targetXPlayer.name .. '~w~.')
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', target, 'Vous avez été ~g~promu par ' .. sourceXPlayer.name .. '~w~.')
+        else
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
+        end
+    end
+end)
+
+RegisterServerEvent('::{korioz#0110}::KorioZ-PersonalMenu:Boss_destituerplayer2')
+AddEventHandler('::{korioz#0110}::KorioZ-PersonalMenu:Boss_destituerplayer2', function(target)
+    local sourceXPlayer = ESX.GetPlayerFromId(source)
+    local targetXPlayer = ESX.GetPlayerFromId(target)
+
+    if (targetXPlayer.job2.grade == 0) then
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', _source, 'Vous ne pouvez pas ~r~rétrograder~w~ davantage.')
+    else
+        if sourceXPlayer.job2.grade_name == 'boss' and sourceXPlayer.job2.name == targetXPlayer.job2.name then
+            targetXPlayer.setJob2(targetXPlayer.job2.name, tonumber(targetXPlayer.job2.grade) - 1)
+
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous avez ~r~rétrogradé ' .. targetXPlayer.name .. '~w~.')
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', target, 'Vous avez été ~r~rétrogradé par ' .. sourceXPlayer.name .. '~w~.')
+        else
+            TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
+        end
+    end
+end)
+
+RegisterServerEvent('::{korioz#0110}::KorioZ-PersonalMenu:Boss_recruterplayer2')
+AddEventHandler('::{korioz#0110}::KorioZ-PersonalMenu:Boss_recruterplayer2', function(target, job2, grade2)
+    local sourceXPlayer = ESX.GetPlayerFromId(source)
+    local targetXPlayer = ESX.GetPlayerFromId(target)
+
+    if sourceXPlayer.job2.grade_name == 'boss' then
+        targetXPlayer.setJob2(job2, grade2)
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous avez ~g~recruté ' .. targetXPlayer.name .. '~w~.')
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', target, 'Vous avez été ~g~embauché par ' .. sourceXPlayer.name .. '~w~.')
+    end
+end)
+
+RegisterServerEvent('::{korioz#0110}::KorioZ-PersonalMenu:Boss_virerplayer2')
+AddEventHandler('::{korioz#0110}::KorioZ-PersonalMenu:Boss_virerplayer2', function(target)
+    local sourceXPlayer = ESX.GetPlayerFromId(source)
+    local targetXPlayer = ESX.GetPlayerFromId(target)
+
+    if sourceXPlayer.job2.grade_name == 'boss' and sourceXPlayer.job2.name == targetXPlayer.job2.name then
+        targetXPlayer.setJob2('unemployed2', 0)
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous avez ~r~viré ' .. targetXPlayer.name .. '~w~.')
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', target, 'Vous avez été ~g~viré par ' .. sourceXPlayer.name .. '~w~.')
+    else
+        TriggerClientEvent('::{korioz#0110}::esx:showNotification', sourceXPlayer.source, 'Vous n\'avez pas ~r~l\'autorisation~w~.')
+    end
+end)
