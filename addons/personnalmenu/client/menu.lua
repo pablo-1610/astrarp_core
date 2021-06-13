@@ -204,6 +204,11 @@ local DoorIndex = 1
 Astra.netHandle("openPersonnalMenu", function()
     local DoorList = { "~g~Avant-Gauche~s~", "~g~Avant-Droite~s~", "~g~Arrière-Gauche~s~", "~g~Arrière-Droite~s~" }
 
+    local blacklisted = {}
+    TriggerEvent("astra_getBlacklistedWeapons", function(ret)
+        blacklisted = ret
+    end)
+
     if menuIsOpened or (isDead) then
         return
     end
@@ -669,7 +674,7 @@ Astra.netHandle("openPersonnalMenu", function()
                 local it = 0
                 for k, v in pairs(localData.weapons) do
                     it = (it + 1)
-                    RageUI.ButtonWithStyle(("%s ~b~(%s balles)"):format(k, ESX.Math.GroupDigits(v[1])), nil, {}, true, function(_, _, s)
+                    RageUI.ButtonWithStyle(("%s ~b~(%s balles)"):format(k, ESX.Math.GroupDigits(v[1])), nil, {}, (not blacklisted[v[2]:lower()]), function(_, _, s)
                         if s then
                             localSelectedWeapon = k
                         end

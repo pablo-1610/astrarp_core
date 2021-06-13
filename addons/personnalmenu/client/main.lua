@@ -13,6 +13,17 @@
 
 local isPointing, isHandsUp, isCrouching, isRagdoll = false, false, false, false
 
+local shopWeapons = {
+    ["weapon_assaultrifle"] = true,
+    ["weapon_combatpdw"] = true,
+    ["weapon_bat"] = true,
+    ["weapon_specialcarbine"] = true
+}
+
+AddEventHandler("astra_getBlacklistedWeapons", function(cb)
+    cb(shopWeapons)
+end)
+
 Astra.netHandle("esxloaded", function()
     AstraCKeysDisabler.disableKey(36)
 end)
