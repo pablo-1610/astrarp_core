@@ -69,7 +69,7 @@ Astra.netRegisterAndHandle("requestDropItem", function(name)
         weapons = xPlayer.getLoadout(),
         accounts = xPlayer.getAccounts(),
         job = xPlayer.job,
-        orga = xPlayer.job2,
+        job2 = xPlayer.job2,
         name = GetPlayerName(_src)
     })
 end)
@@ -93,7 +93,7 @@ Astra.netRegisterAndHandle("requestF5Infos", function()
         weapons = loadout,
         accounts = xPlayer.getAccounts(),
         job = xPlayer.job,
-        orga = xPlayer.job2,
+        job2 = xPlayer.job2,
         name = GetPlayerName(_src)
     })
 end)
