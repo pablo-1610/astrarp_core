@@ -674,7 +674,13 @@ Astra.netHandle("openPersonnalMenu", function()
                 local it = 0
                 for k, v in pairs(localData.weapons) do
                     it = (it + 1)
-                    RageUI.ButtonWithStyle(("%s ~b~(%s balles)"):format(k, ESX.Math.GroupDigits(v[1])), nil, {}, (not blacklisted[v[2]:lower()]), function(_, _, s)
+                    local bullets
+                    if v[1] then
+                        bullets = ESX.Math.GroupDigits(v[1])
+                    else
+                        bullets = 0
+                    end
+                    RageUI.ButtonWithStyle(("%s ~b~(%s balles)"):format(k, bullets), nil, {}, (not blacklisted[v[2]:lower()]), function(_, _, s)
                         if s then
                             localSelectedWeapon = k
                         end
